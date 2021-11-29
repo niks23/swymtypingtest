@@ -32,7 +32,9 @@ const Timer = () => {
                 setLoader(true);
                 setTimeout(() => {
                     setLoader(false);
+                    context.setStartTimer(false);
                     context.setStep(3);
+
                 }, 300)
             }
         }, 1000)

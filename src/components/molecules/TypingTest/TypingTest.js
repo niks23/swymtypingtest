@@ -1,6 +1,4 @@
-import React from 'react'
-import { useContext } from 'react';
-import { useState } from 'react/cjs/react.development'
+import React, { useContext, useState } from 'react'
 import { data } from '../../../data';
 import { TypingTestContext } from '../../../pages/HomePage/HomePage';
 import Input from '../../atoms/Input/Input'
@@ -51,6 +49,7 @@ export const TypingTest = () => {
                 setLoader(true);
                 setTimeout(() => {
                     setLoader(false);
+                    context.setStartTimer(false);
                     context.setStep(3);
                 }, 300)
             }
