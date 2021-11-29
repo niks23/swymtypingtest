@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/swymtypingtest.git/static/css/main.1acfd46d.chunk.css",
+    "main.js": "/swymtypingtest.git/static/js/main.0270add8.chunk.js",
+    "main.js.map": "/swymtypingtest.git/static/js/main.0270add8.chunk.js.map",
+    "runtime-main.js": "/swymtypingtest.git/static/js/runtime-main.f31a4170.js",
+    "runtime-main.js.map": "/swymtypingtest.git/static/js/runtime-main.f31a4170.js.map",
+    "static/js/2.0a7ea4d2.chunk.js": "/swymtypingtest.git/static/js/2.0a7ea4d2.chunk.js",
+    "static/js/2.0a7ea4d2.chunk.js.map": "/swymtypingtest.git/static/js/2.0a7ea4d2.chunk.js.map",
+    "static/js/3.1a7aec5a.chunk.js": "/swymtypingtest.git/static/js/3.1a7aec5a.chunk.js",
+    "static/js/3.1a7aec5a.chunk.js.map": "/swymtypingtest.git/static/js/3.1a7aec5a.chunk.js.map",
+    "index.html": "/swymtypingtest.git/index.html",
+    "static/css/main.1acfd46d.chunk.css.map": "/swymtypingtest.git/static/css/main.1acfd46d.chunk.css.map",
+    "static/js/2.0a7ea4d2.chunk.js.LICENSE.txt": "/swymtypingtest.git/static/js/2.0a7ea4d2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f31a4170.js",
+    "static/js/2.0a7ea4d2.chunk.js",
+    "static/css/main.1acfd46d.chunk.css",
+    "static/js/main.0270add8.chunk.js"
+  ]
+}
