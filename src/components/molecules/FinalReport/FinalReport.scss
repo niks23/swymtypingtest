@@ -1,0 +1,20 @@
+.finalreport {
+  display: flex;
+  flex-direction: column;
+
+  .report {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 32px;
+
+    span {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}

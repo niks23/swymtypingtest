@@ -1,0 +1,9 @@
+.timer {
+  display: flex;
+  margin-bottom: 15px;
+  transition: opacity 1s ease-in-out;
+
+  strong {
+    font-weight: 700;
+  }
+}
