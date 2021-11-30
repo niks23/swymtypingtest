@@ -25,11 +25,6 @@ export const TypingTest = () => {
     const [loader, setLoader] = useState(false);
 
     const inputChangeHandler = (value) => {
-        if (!context.wordArr.length) {
-            console.log("HELLO");
-            context.setStartTimer(true);
-        }
-
         if (value.endsWith(' ')) {
             const word = value.trim();
             const checkWord = word === words[context.activeWordIndex];
@@ -49,7 +44,6 @@ export const TypingTest = () => {
                 setLoader(true);
                 setTimeout(() => {
                     setLoader(false);
-                    context.setStartTimer(false);
                     context.setStep(3);
                 }, 300)
             }

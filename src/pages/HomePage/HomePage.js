@@ -13,7 +13,6 @@ export const HomePage = () => {
     const [activeWordIndex, setActiveWordIndex] = useState(0);
     const [wordArr, setWordArr] = useState([]);
     const [score, setScore] = useState(0);
-    const [startTimer, setStartTimer] = useState(false);
 
     const setTimer = (e) => {
         setTime(e.target.value);
@@ -52,14 +51,12 @@ export const HomePage = () => {
                 activeWordIndex,
                 wordArr,
                 score,
-                startTimer,
                 setTimer,
                 clickHandler,
                 setActiveWordIndex,
                 setWordArr,
                 setScore,
                 setStep,
-                setStartTimer,
             }}
         >
             <div className="container">

@@ -32,9 +32,7 @@ const Timer = () => {
                 setLoader(true);
                 setTimeout(() => {
                     setLoader(false);
-                    context.setStartTimer(false);
                     context.setStep(3);
-
                 }, 300)
             }
         }, 1000)
@@ -53,7 +51,7 @@ const Timer = () => {
     }
 
     return (
-        <div className="timer" style={{ opacity: !context.startTimer ? 0 : 1 }}>
+        <div className="timer">
             <span>Time Left: </span>
             {getTimerData()}
             {loader && <Loader />}
