@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { data } from '../../../data';
 import { TypingTestContext } from '../../../pages/HomePage/HomePage';
-import Input from '../../atoms/Input/Input'
 import Loader from '../../atoms/Loader/Loader';
-import Word from '../../atoms/Word/Word';
+import Character from '../../atoms/Character/Character';
 import './TypingTest.scss';
+import Textarea from '../../atoms/Textarea/Textarea';
 
 function shuffle() {
     const wordsArr = data.split(' ');
@@ -17,58 +17,88 @@ function shuffle() {
     return wordsArr;
 }
 
-const words = shuffle();
+const getCharacters = (words) => {
+    const dataArr = [];
+
+    for (let i = 0; i < words.length; i++) {
+        dataArr.push(words[i]);
+    }
+
+    return dataArr;
+}
+
+const words = shuffle().join(' ');
+const characters = getCharacters(words);
 
 export const TypingTest = () => {
     const context = useContext(TypingTestContext);
     const [userInput, setUserInput] = useState('');
     const [loader, setLoader] = useState(false);
 
+    const updateReport = () => {
+        const finalUserInput = userInput.split(' ');
+        const dataArr = words.split(' ');
+
+        for (let i = 0; i < dataArr.length; i++) {
+            if (dataArr[i] === finalUserInput[i]) {
+                context.setScore(prevScore => prevScore + 10);
+                context.setCorrectWordArr(arr => [...arr, dataArr[i]])
+            } else {
+                console.log('ENtered');
+                context.setIncorrectWordArr(arr => [...arr, dataArr[i]])
+                context.setScore(prevScore => prevScore - 5)
+            }
+        }
+
+    }
+
     const inputChangeHandler = (value) => {
-        if (value.endsWith(' ')) {
-            const word = value.trim();
-            const checkWord = word === words[context.activeWordIndex];
-            context.setActiveWordIndex(index => index + 1);
+        setUserInput(value);
 
-            context.setWordArr(data => {
-                const newResult = [...data];
-                newResult[context.activeWordIndex] = checkWord;
-                return newResult;
-            })
+        for (let i = 0; i < words.length; i++) {
+            const checkChar = value[i] ? value[i] === words[i] : null;
+            context.setCharArr(data => {
+                const newData = [...data];
+                newData[i] = checkChar;
+                return newData;
+            });
+        }
 
-            checkWord
-                ? context.setScore(prevScore => prevScore + 10)
-                : context.setScore(prevScore => prevScore - 5)
+        let checker = arr => arr.every(item => item === true || item === false);
+        if (context.charArr.length > 0 && checker(context.charArr)) {
+            setLoader(true);
 
-            if (context.wordArr.length === words.length - 1) {
-                setLoader(true);
-                setTimeout(() => {
-                    setLoader(false);
-                    context.setStep(3);
-                }, 300)
+            if (userInput.length === words.length) {
+                updateReport();
             }
 
-            setUserInput(' ');
-        } else {
-            setUserInput(value);
+            setTimeout(() => {
+                setLoader(false);
+                context.setStep(3);
+            }, 500)
         }
     }
 
     return (
         <div className="typing-test">
             <p>
-                {words.map((word, index) => {
+                {characters.map((word, index) => {
                     return (
-                        <Word
+                        <Character
                             text={word}
                             key={index}
-                            active={index === context.activeWordIndex}
-                            correct={context.wordArr[index]}
+                            correct={context.charArr[index]}
                         />
                     )
                 })}
             </p>
-            <Input value={userInput} changeHandler={(e) => inputChangeHandler(e.target.value)} />
+            <Textarea
+                value={userInput}
+                changeHandler={(e) =>
+                    inputChangeHandler(e.target.value)
+                }
+                maxlength={words.length + 1}
+            />
             {loader && <Loader />}
         </div>
     )

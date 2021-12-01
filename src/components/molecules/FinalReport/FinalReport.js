@@ -6,13 +6,13 @@ import './FinalReport.scss';
 
 const FinalReport = () => {
     const context = useContext(TypingTestContext);
-    const wordPerMinutes = context.wordArr.length;
-    const typos = context.wordArr.filter(item => item === false).length;
+    const wordPerMinutes = context.correctWordArr.length + context.incorrectWordArr.length;
+    const typos = context.incorrectWordArr.length;
 
     const getAccuracy = () => {
-        if (context.wordArr.length > 0) {
-            const correctWords = context.wordArr.filter(item => item === true).length;
-            const totalWords = context.wordArr.length;
+        if (context.charArr.length > 0) {
+            const correctWords = context.correctWordArr.length;
+            const totalWords = wordPerMinutes;
             const accuracy = ((correctWords / totalWords) * 100).toFixed(2);
             return accuracy;
         } else {

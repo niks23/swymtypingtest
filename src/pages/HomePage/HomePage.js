@@ -10,9 +10,10 @@ export const TypingTestContext = createContext();
 export const HomePage = () => {
     const [time, setTime] = useState(1);
     const [step, setStep] = useState(1);
-    const [activeWordIndex, setActiveWordIndex] = useState(0);
-    const [wordArr, setWordArr] = useState([]);
+    const [correctWordArr, setCorrectWordArr] = useState([]);
+    const [incorrectWordArr, setIncorrectWordArr] = useState([]);
     const [score, setScore] = useState(0);
+    const [charArr, setCharArr] = useState([]);
 
     const setTimer = (e) => {
         setTime(e.target.value);
@@ -26,8 +27,10 @@ export const HomePage = () => {
         if (step === 3) {
             setStep(1);
             setTime(1);
-            setWordArr([]);
-            setActiveWordIndex(0);
+            setCharArr([]);
+            setScore(0);
+            setCorrectWordArr([]);
+            setIncorrectWordArr([]);
         }
     }
 
@@ -48,13 +51,15 @@ export const HomePage = () => {
         <TypingTestContext.Provider
             value={{
                 time,
-                activeWordIndex,
-                wordArr,
+                charArr,
                 score,
+                correctWordArr,
+                incorrectWordArr,
                 setTimer,
                 clickHandler,
-                setActiveWordIndex,
-                setWordArr,
+                setCorrectWordArr,
+                setIncorrectWordArr,
+                setCharArr,
                 setScore,
                 setStep,
             }}
