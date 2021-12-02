@@ -27,33 +27,33 @@ const getCharacters = (words) => {
     return dataArr;
 }
 
-const words = shuffle().join(' ');
+export const words = shuffle().join(' ');
 const characters = getCharacters(words);
 
 export const TypingTest = () => {
     const context = useContext(TypingTestContext);
-    const [userInput, setUserInput] = useState('');
+    // const [userInput, setUserInput] = useState('');
     const [loader, setLoader] = useState(false);
 
-    const updateReport = () => {
-        const finalUserInput = userInput.split(' ');
-        const dataArr = words.split(' ');
+    // const updateReport = () => {
+    //     const finalUserInput = userInput.split(' ');
+    //     const dataArr = words.split(' ');
 
-        for (let i = 0; i < dataArr.length; i++) {
-            if (dataArr[i] === finalUserInput[i]) {
-                context.setScore(prevScore => prevScore + 10);
-                context.setCorrectWordArr(arr => [...arr, dataArr[i]])
-            } else {
-                console.log('ENtered');
-                context.setIncorrectWordArr(arr => [...arr, dataArr[i]])
-                context.setScore(prevScore => prevScore - 5)
-            }
-        }
+    //     for (let i = 0; i < dataArr.length; i++) {
+    //         if (dataArr[i] === finalUserInput[i]) {
+    //             context.setScore(prevScore => prevScore + 10);
+    //             context.setCorrectWordArr(arr => [...arr, dataArr[i]])
+    //         } else {
+    //             console.log('ENtered');
+    //             context.setIncorrectWordArr(arr => [...arr, dataArr[i]])
+    //             context.setScore(prevScore => prevScore - 5)
+    //         }
+    //     }
 
-    }
+    // }
 
     const inputChangeHandler = (value) => {
-        setUserInput(value);
+        context.setUserInput(value);
 
         for (let i = 0; i < words.length; i++) {
             const checkChar = value[i] ? value[i] === words[i] : null;
@@ -68,12 +68,14 @@ export const TypingTest = () => {
         if (context.charArr.length > 0 && checker(context.charArr)) {
             setLoader(true);
 
-            if (userInput.length === words.length) {
-                updateReport();
+            if (context.userInput.length === words.length) {
+
+                context.updateReport(words);
             }
 
             setTimeout(() => {
                 setLoader(false);
+                context.setUserInput('');
                 context.setStep(3);
             }, 500)
         }
@@ -93,7 +95,7 @@ export const TypingTest = () => {
                 })}
             </p>
             <Textarea
-                value={userInput}
+                value={context.userInput}
                 changeHandler={(e) =>
                     inputChangeHandler(e.target.value)
                 }

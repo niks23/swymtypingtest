@@ -47,6 +47,25 @@ export const HomePage = () => {
         }
     }
 
+    const [userInput, setUserInput] = useState('');
+
+    const updateReport = (words) => {
+        const finalUserInput = userInput.split(' ');
+        const dataArr = words.split(' ');
+
+        for (let i = 0; i < dataArr.length; i++) {
+            if (dataArr[i] === finalUserInput[i]) {
+                setScore(prevScore => prevScore + 10);
+                setCorrectWordArr(arr => [...arr, dataArr[i]])
+            } else {
+                console.log('ENtered');
+                setIncorrectWordArr(arr => [...arr, dataArr[i]])
+                setScore(prevScore => prevScore - 5)
+            }
+        }
+
+    }
+
     return (
         <TypingTestContext.Provider
             value={{
@@ -55,6 +74,7 @@ export const HomePage = () => {
                 score,
                 correctWordArr,
                 incorrectWordArr,
+                userInput,
                 setTimer,
                 clickHandler,
                 setCorrectWordArr,
@@ -62,6 +82,8 @@ export const HomePage = () => {
                 setCharArr,
                 setScore,
                 setStep,
+                setUserInput,
+                updateReport
             }}
         >
             <div className="container">

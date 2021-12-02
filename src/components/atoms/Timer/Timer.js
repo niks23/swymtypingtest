@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { TypingTestContext } from '../../../pages/HomePage/HomePage';
+import { words } from '../../molecules/TypingTest/TypingTest';
 import Loader from '../Loader/Loader';
 import './Timer.scss';
 
@@ -33,6 +34,7 @@ const Timer = () => {
                 setTimeout(() => {
                     setLoader(false);
                     context.setStep(3);
+                    context.updateReport(words);
                 }, 300)
             }
         }, 1000)
