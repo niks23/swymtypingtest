@@ -32,25 +32,7 @@ const characters = getCharacters(words);
 
 export const TypingTest = () => {
     const context = useContext(TypingTestContext);
-    // const [userInput, setUserInput] = useState('');
     const [loader, setLoader] = useState(false);
-
-    // const updateReport = () => {
-    //     const finalUserInput = userInput.split(' ');
-    //     const dataArr = words.split(' ');
-
-    //     for (let i = 0; i < dataArr.length; i++) {
-    //         if (dataArr[i] === finalUserInput[i]) {
-    //             context.setScore(prevScore => prevScore + 10);
-    //             context.setCorrectWordArr(arr => [...arr, dataArr[i]])
-    //         } else {
-    //             console.log('ENtered');
-    //             context.setIncorrectWordArr(arr => [...arr, dataArr[i]])
-    //             context.setScore(prevScore => prevScore - 5)
-    //         }
-    //     }
-
-    // }
 
     const inputChangeHandler = (value) => {
         context.setUserInput(value);

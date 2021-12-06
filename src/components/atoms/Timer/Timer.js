@@ -20,7 +20,7 @@ const Timer = () => {
                 setSeconds(seconds - 1);
             }
 
-            if (seconds === 0) {
+            if (!seconds) {
                 if (minutes === 0) {
                     clearInterval(timerInterval)
                 } else {
@@ -29,7 +29,7 @@ const Timer = () => {
                 }
             }
 
-            if (minutes === 0 && seconds === 0) {
+            if (!minutes && !seconds) {
                 setLoader(true);
                 setTimeout(() => {
                     setLoader(false);

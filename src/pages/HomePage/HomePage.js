@@ -58,12 +58,10 @@ export const HomePage = () => {
                 setScore(prevScore => prevScore + 10);
                 setCorrectWordArr(arr => [...arr, dataArr[i]])
             } else {
-                console.log('ENtered');
                 setIncorrectWordArr(arr => [...arr, dataArr[i]])
                 setScore(prevScore => prevScore - 5)
             }
         }
-
     }
 
     return (
