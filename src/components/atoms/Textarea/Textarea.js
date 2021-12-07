@@ -9,6 +9,7 @@ const Textarea = ({ value, maxlength, changeHandler }) => {
             maxLength={maxlength}
             onChange={changeHandler}
             placeholder="Start Typing..."
+            onPaste={(e) => e.preventDefault()}
         ></textarea>
     )
 }
